@@ -1,0 +1,63 @@
+DEBUG: Checking if executeworkflow() is complete
+DEBUG: Checking if combineClinicalData() is complete
+INFO: Informed scheduler that task   executeworkflow__99914b932b   has status   PENDING
+DEBUG: Checking if concatenateFiles() is complete
+INFO: Informed scheduler that task   combineClinicalData__99914b932b   has status   PENDING
+DEBUG: Checking if PVI_indeces() is complete
+INFO: Informed scheduler that task   concatenateFiles__99914b932b   has status   PENDING
+DEBUG: Checking if PVIpre() is complete
+INFO: Informed scheduler that task   PVI_indeces__99914b932b   has status   PENDING
+INFO: Informed scheduler that task   PVIpre__99914b932b   has status   PENDING
+INFO: Done scheduling tasks
+INFO: Running Worker with 1 processes
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 5
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) running   PVIpre()
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) done      PVIpre()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   PVIpre__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 4
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) running   PVI_indeces()
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) done      PVI_indeces()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   PVI_indeces__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 3
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) running   concatenateFiles()
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) done      concatenateFiles()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   concatenateFiles__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 2
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) running   combineClinicalData()
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) done      combineClinicalData()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   combineClinicalData__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Pending tasks: 1
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) running   executeworkflow()
+INFO: [pid 25603] Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) done      executeworkflow()
+DEBUG: 1 running tasks, waiting for next task to finish
+INFO: Informed scheduler that task   executeworkflow__99914b932b   has status   DONE
+DEBUG: Asking scheduler for work...
+DEBUG: Done
+DEBUG: There are no more tasks to run at this time
+INFO: Worker Worker(salt=254395174, workers=1, host=snf-714129, username=aegle_welcome, pid=25603) was stopped. Shutting down Keep-Alive thread
+INFO: 
+===== Luigi Execution Summary =====
+
+Scheduled 5 tasks of which:
+* 5 ran successfully:
+    - 1 PVI_indeces()
+    - 1 PVIpre()
+    - 1 combineClinicalData()
+    - 1 concatenateFiles()
+    - 1 executeworkflow()
+
+This progress looks :) because there were no failed tasks or missing external dependencies
+
+===== Luigi Execution Summary =====
+
+Data 'hdfs:///ICU/IEProcessedPVI1.csv'
+Command spark-submit --driver-memory 1024m --executor-memory 2560m --master=yarn-cluster hdfs:///prototype/tools/icu/concatenateFiles.R 'hdfs:///ICU/IEProcessedPVI1.csv' 'row' ConcatenatedFile.csv
