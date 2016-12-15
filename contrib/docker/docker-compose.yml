@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ../../html/aegle:/app
+      - ./site.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - aegle-ui
+  aegle-ui:
+    image: aegle-ui:latest
+    volumes:
+      - ../../html/aegle:/app
