@@ -20,7 +20,7 @@ class KeyCloak extends Controller
             'realm'             => 'AEGLE',
             'clientId'          => 'aegle_frontend',
             'clientSecret'      => '2eb4046b-bc73-4d7e-b93b-5f64c73dde52',
-            'redirectUri'       => 'http://83.212.97.243/aegle/public/index.php/keycloak',
+            'redirectUri'       => 'http://demo.aegle-uhealth.eu:8081/public/index.php/keycloak',
         ]);
 
 
@@ -93,7 +93,7 @@ class KeyCloak extends Controller
             'realm'             => 'AEGLE',
             'clientId'          => 'aegle_frontend',
             'clientSecret'      => '2eb4046b-bc73-4d7e-b93b-5f64c73dde52',
-            'redirectUri'       => 'http://localhost:88/aegle/public/keycloak',
+            'redirectUri'       => 'http://demo.aegle-uhealth.eu:8081/public/index.php/keycloak',
         ]);
 
         /*
